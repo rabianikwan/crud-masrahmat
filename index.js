@@ -6,6 +6,8 @@ const bodyParser = require("body-parser");
 const app = express();
 const PORT = 5000;
 
+
+app.use(cors("*"));
 app.set('view engine', 'ejs')
 app.use(express.json())
 app.use(express.urlencoded({ extended : true}))
@@ -16,8 +18,6 @@ app.get('/', async (req, res) => {
   })
 
 app.use(blogRouter);
-
-app.use(cors("*"));
 
 app.listen(PORT, () => {
   console.log(`server runnning on port: ${PORT}`);
