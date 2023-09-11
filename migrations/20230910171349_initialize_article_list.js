@@ -2,7 +2,7 @@ const TABLE_NAME = "blogs";
 
 /**
  * @param { import("knex").Knex } knex
- * @returns { Promise<void> }
+ * @returns {Knex.SchemaBuilder}
  */
 exports.up = function (knex) {
   return knex.schema.createTable(TABLE_NAME, function (table) {

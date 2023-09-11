@@ -1,6 +1,8 @@
-const blogModel = require("../models/blog.models");
 
-const blogModels = new blogModel();
+const BlogModel = require("../models/blog.models");
+
+const blogModel = new BlogModel()
+
 
 const getBlogs = async (req, res) => {
   const blogs = await blogModel.getAll();
@@ -41,11 +43,9 @@ function saveblogAndRedirect(path) {
   };
 }
 
-const blogController = {
+module.export = {
   getBlogs,
   addBlog,
   deleteBlog,
   editBlog,
 };
-
-module.export = blogController;

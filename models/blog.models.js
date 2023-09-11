@@ -1,11 +1,12 @@
 const db = require("../config/db");
 const { v4 } = require("uuid");
 
-class blogModel {
+class BlogModel {
   tableName = "blogs";
   constructor() {}
+
   async getAll() {
-    return await db(this.tableName).select("*");
+    return db(this.tableName).select("*");
   }
 
   async create({ title, content, author }) {
@@ -42,4 +43,4 @@ class blogModel {
   }
 }
 
-module.exports = blogModel;
+module.exports = BlogModel;

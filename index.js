@@ -4,18 +4,19 @@ const blogRouter = require("./routes/blog.router.js");
 const bodyParser = require("body-parser");
 
 const app = express();
-
 const PORT = 5000;
 
-app.set('view wngine', 'ejs')
+app.set('view engine', 'ejs')
+app.use(express.json())
+app.use(express.urlencoded({ extended : true}))
 
 app.get('/', async (req, res) => {
     const articles = await Blog.find().sort({ createdAt: 'desc' })
     res.render('views/index', { Blog: blog })
   })
 
-app.use("/blog", blogRouter);
-app.use(bodyParser.json());
+app.use(blogRouter);
+
 app.use(cors("*"));
 
 app.listen(PORT, () => {
